@@ -15,27 +15,27 @@ namespace EFWithTransactions
                         //saving category
                         Category category = new Category
                         {
-                            CategoryId = 1,
                             CategoryName = "Clothes"
                         };
                         productDbContext.Categories.Add(category);
                         productDbContext.SaveChanges();
 
                         // Throw some error to check transaction
-                        throw new Exception("Custom Exception");
+                        // Comment this to make transactions sucessfull
+                        // throw new Exception("Custom Exception");
 
                         //saving product
                         Product product = new Product
                         {
-                            ProductId = 1,
                             ProductName = "Blue Denim Shirt",
-                            CategoryId = 1
+                            CategoryId = category.CategoryId
                         };
                         productDbContext.Products.Add(product);
                         productDbContext.SaveChanges();
                         Console.Write("Cateogry and Product both saved");
+                        transaction.Commit();
                     }
-                    catch (Exception)
+                    catch (Exception exception)
                     {
                         transaction.Rollback();
                         Console.WriteLine("Transaction Roll backed due to some exception");
