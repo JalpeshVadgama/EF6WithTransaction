@@ -1,5 +1,4 @@
-﻿
-using System;
+﻿using System;
 
 namespace EFWithTransactions
 {
@@ -21,6 +20,9 @@ namespace EFWithTransactions
                         };
                         productDbContext.Categories.Add(category);
 
+                        // Throw some error to check transaction
+                        throw new Exception("Custom Exception");
+
                         //saving product
                         Product product = new Product
                         {
@@ -35,6 +37,7 @@ namespace EFWithTransactions
                     catch (Exception)
                     {
                         transaction.Rollback();
+                        Console.WriteLine("Transaction Rollbacked due to some exception");
                     }
                 }
 
