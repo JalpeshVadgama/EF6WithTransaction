@@ -2,17 +2,9 @@
 
 namespace EFWithTransactions
 {
-    public class TransactionDbContext : DbContext
+    public class ProductDbContext : DbContext
     {
-        public DbSet<Department> Departments { get; set; }
-        public DbSet<Employee> Employees { get; set; }
-    }
-
-    public class Employee
-    {
-    }
-
-    public class Department
-    {
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Product> Products { get; set; }
     }
 }
