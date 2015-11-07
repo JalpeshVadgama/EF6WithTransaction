@@ -38,7 +38,7 @@ namespace EFWithTransactions
                     catch (Exception)
                     {
                         transaction.Rollback();
-                        Console.WriteLine("Transaction Rollbacked due to some exception");
+                        Console.WriteLine("Transaction Roll backed due to some exception");
                     }
                 }
 
