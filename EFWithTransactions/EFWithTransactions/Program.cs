@@ -19,6 +19,7 @@ namespace EFWithTransactions
                             CategoryName = "Clothes"
                         };
                         productDbContext.Categories.Add(category);
+                        productDbContext.SaveChanges();
 
                         // Throw some error to check transaction
                         throw new Exception("Custom Exception");
